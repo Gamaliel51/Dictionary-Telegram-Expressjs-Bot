@@ -15,7 +15,7 @@ app.post("/gamabot", (req, res) => {
     let {message} = req.body
     let fullresponse = ""
 
-    if (!message){
+    if (message.text == "help"){
         axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage", {
             chat_id: message.chat.id,
             text: `My current functions now, includes: \nGetting Word Definitions - Just type wordhelp <word>`
