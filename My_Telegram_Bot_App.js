@@ -68,6 +68,6 @@ app.post("/gamabot", (req, res) => {
     }
 })
 
-app.listen(3000, () => {
-    console.log("Listening on port 5000")
+app.listen(process.env.PORT, () => {
+    console.log("Listening")
 })
