@@ -1,6 +1,6 @@
 const  express = require("express")
 const axios = require("axios")
-const request = require()
+const request = require("request")
 
 const app = express()
 //5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY
@@ -65,7 +65,18 @@ app.post("/gamabot", (req, res) => {
         })
     }
 
-    axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage", message)
+    var cOptions = {
+        uri: "https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage",
+        body: JSON.stringify(message),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    request(cOptions, (err, res) => {
+        console.log(res)
+    })
 
 })
 
