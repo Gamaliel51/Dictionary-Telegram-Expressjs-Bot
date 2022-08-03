@@ -19,7 +19,7 @@ app.post("/gamabot", (req, res) => {
         res.end()
     }
 
-    if (message.text.toLowerCase().indexOf("wordhelp") != -1){
+    if (message.text.toLowerCase().indexOf("wordhelp") !== -1){
         let m = message.text.toLowerCase()
         m.replace("wordhelp", "")
         m.replaceAll(" ", "")
@@ -64,6 +64,6 @@ app.post("/gamabot", (req, res) => {
     }
 })
 
-app.listen(5000, () => {
+app.listen(3000, () => {
     console.log("Listening on port 5000")
 })
