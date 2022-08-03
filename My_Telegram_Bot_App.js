@@ -19,7 +19,7 @@ app.post("/gamabot", (req, res) => {
         res.end()
     }
 
-    if (message.text.toLowerCase().indexOf("wordhelp") !== -1){
+    if (message.text.toLowerCase().indexOf("wordhelp") != -1){
         let m = message.text.toLowerCase()
         m.replace("wordhelp", "")
         m.replaceAll(" ", "")
