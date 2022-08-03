@@ -65,19 +65,10 @@ app.post("/gamabot", (req, res) => {
         })
     }
 
-    var cOptions = {
-        uri: "https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage",
-        body: JSON.stringify(message),
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-
-    request(cOptions, (err, res) => {
-        console.log(res)
+    axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage",{
+        "chat_id": message.chat.id,
+        "text": "hello"
     })
-
 })
 
 app.listen(process.env.PORT, () => {
