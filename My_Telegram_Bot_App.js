@@ -17,7 +17,10 @@ app.post("/gamabot", (req, res) => {
     let fullresponse = ""
 
     if (message.text == "help"){
-        axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage", message)
+        axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage", {
+            "chat_id": message.chat.id,
+            "text": "Type wordhelp <word to check info on"
+        })
         res.end()
     }
 
@@ -55,8 +58,8 @@ app.post("/gamabot", (req, res) => {
         reply += "Next : \n"
 
         axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage", {
-            chat_id: message.chat.id,
-            text: reply
+            "chat_id": message.chat.id,
+            "text": reply
         }).then((response) => {
             res.end()
         }).catch((err) => {
@@ -67,7 +70,7 @@ app.post("/gamabot", (req, res) => {
 
     axios.post("https://api.telegram.org/bot5413442689:AAF72aDW97J06Bi5WweLbpZInQk7KVcHLfY/sendMessage",{
         "chat_id": message.chat.id,
-        "text": "hello"
+        "text": message.text
     })
 })
 
