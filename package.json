@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node My_Telegram_Bot_App.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
