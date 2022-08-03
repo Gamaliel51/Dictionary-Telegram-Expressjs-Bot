@@ -17,11 +17,10 @@ app.post("/gamabot", (req, res) => {
     let fullresponse = ""
 
     if (message.text == "help"){
-        axios.post("https://api.telegram.org/bot5547929697:AAH5pitfZfU7V06EMgQNtMR8_z1oRSu0SDw/sendMessage", {
+        axios.post("https://api.telegram.org/bot5582410539:AAE2EXxLlZc3GJj5HaqUtyScnPGUcqCoXvU/sendMessage", {
             "chat_id": message.chat.id,
             "text": "Type wordhelp <word to check info on"
         })
-        res.end()
     }
 
     if (message.text.toLowerCase().indexOf("wordhelp") >= 9999){
@@ -57,7 +56,7 @@ app.post("/gamabot", (req, res) => {
         reply += `${results.pronunciation.all}\n`
         reply += "Next : \n"
 
-        axios.post("https://api.telegram.org/bot5547929697:AAH5pitfZfU7V06EMgQNtMR8_z1oRSu0SDw/sendMessage", {
+        axios.post("https://api.telegram.org/bot5582410539:AAE2EXxLlZc3GJj5HaqUtyScnPGUcqCoXvU/sendMessage", {
             "chat_id": message.chat.id,
             "text": reply
         }).then((response) => {
@@ -68,7 +67,7 @@ app.post("/gamabot", (req, res) => {
         })
     }
 
-    axios.post("https://api.telegram.org/bot5547929697:AAH5pitfZfU7V06EMgQNtMR8_z1oRSu0SDw/sendMessage",{
+    axios.post("https://api.telegram.org/bot5582410539:AAE2EXxLlZc3GJj5HaqUtyScnPGUcqCoXvU/sendMessage",{
         "chat_id": message.chat.id,
         "text": message.text
     })
