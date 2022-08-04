@@ -1,6 +1,6 @@
 const axios = require("axios")
 
-async function wordhelper(word) {
+async function wordhelper(word, chat_id) {
     const options = {
         method: 'GET',
         url: `https://wordsapiv1.p.rapidapi.com/words/${word}`,
@@ -9,33 +9,57 @@ async function wordhelper(word) {
           'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
         }
     };
-      
-    result = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}`)
-    respon = await result.json()
 
-    let reply = ``
-    console.log(fullresponse)
+    let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+    let config = {
         
-    respon.results.map((result) => {
-        reply += `Definition: ${result.definition}\n`
-        reply += `Part of Speech: ${result.partOfSpeech}\n`
-        reply += `Syllables: ${result.synonyms.map((i) => {return i})}\n`
-        reply += `Derivation: ${result.derivation.map((i) => {return i})}\n`
-        reply += `Examples: ${result.examples.map((i) => {return i})}\n`
-    })
+    }
 
-    reply += `${respon.results.pronunciation.all}\n`
-    reply += "Next : \n"
-    
-    axios.post("https://api.telegram.org/bot5582410539:AAE2EXxLlZc3GJj5HaqUtyScnPGUcqCoXvU/sendMessage", {
-            "chat_id": chat_id,
-            "text": reply
-        }).then((response) => {
-            console.log(response.json())
-        }).catch((err) => {
-            console.error(err)
-            res.send("Error: " + err)
+    let result = ""
+
+    axios.get(url).then((response) => {
+        results = response.data
+        console.log("results: ")
+        console.log(results)
+
+        respon = results[0]
+
+        let reply = ``
+        console.log("meanings: ")
+        console.log(respon.meanings)
+            
+        respon.meanings.forEach((result) => {
+            reply += `Part Of Speech: ${result.partOfSpeech}\n`
+            result.definitions.forEach((defs) => {
+                reply += `Definition: ${defs.definition}\n`
+                reply += `Example: ${defs.example}\n`
+                defs.synonyms.forEach((s) => {
+                    reply += `Synonyms: ${s}, `
+                })
+                reply += `\n`
+                defs.antonyms.forEach((a) => {
+                    reply += `Antonyms: ${a}, `
+                })
+                reply += `\n`
+            })
+            reply += `Next \n\n`
         })
+
+        console.log("reply: ")
+        console.log(reply)
+        
+        axios.post("https://api.telegram.org/bot5432331669:AAELTlfBOuSvqfYxkayQ6xrvLFNWisxVdg0/sendMessage", {
+                "chat_id": chat_id,
+                "text": reply
+            }).then((response) => {
+                console.log(response)
+            }).catch((err) => {
+                console.error(err)
+            })
+    }).catch((err) => {
+        console.error(err)
+    })
+    
 }
 
 module.exports = {wordhelper}

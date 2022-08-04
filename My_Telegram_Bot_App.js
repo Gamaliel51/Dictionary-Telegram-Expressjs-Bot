@@ -24,18 +24,21 @@ app.post("/", (req, res) => {
             "chat_id": chat_id,
             "text": "Type wordhelp <word to check info on"
         })
+        res.end()
     }
 
     if (text.toLowerCase().indexOf("wordhelp") >= 0){
         let m = text.toLowerCase()
         console.log(m)
-        m.replace("wordhelp", "")
-        m.replaceAll(" ", "")
+        m = m.replace("wordhelp", "")
+        m = m.replaceAll(" ", "")
         console.log(m)
 
-        wordhelper(m)
+        wordhelper(m, chat_id)
+        res.end()
     }
 
+    res.end()
 })
 
 app.listen(5000, () => {
