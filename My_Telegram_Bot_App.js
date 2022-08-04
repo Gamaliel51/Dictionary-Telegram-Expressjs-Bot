@@ -14,10 +14,9 @@ app.get("/", (req, res) => {
 })
 
 app.post("/", (req, res) => {
-    console.log(req.body)
+    
     let chat_id = req.body.message.chat.id
     let text = req.body.message.text
-    let fullresponse = ""
 
     if (text == "help"){
         axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
@@ -29,15 +28,13 @@ app.post("/", (req, res) => {
 
     if (text.toLowerCase().indexOf("wordhelp") >= 0){
         let m = text.toLowerCase()
-        console.log(m)
+        
         m = m.replace("wordhelp", "")
         m = m.replaceAll(" ", "")
-        console.log(m)
 
         wordhelper(m, chat_id)
         res.end()
     }
-
     else{
         axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
             "chat_id": chat_id,
@@ -45,7 +42,6 @@ app.post("/", (req, res) => {
         })
         res.end()
     }
-
     res.end()
 })
 

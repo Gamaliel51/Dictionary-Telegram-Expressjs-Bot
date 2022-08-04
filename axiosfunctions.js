@@ -12,24 +12,14 @@ async function wordhelper(word, chat_id) {
     };
 
     let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-    let config = {
-        
-    }
-
-    let result = ""
-
+    
     axios.get(url).then((response) => {
-        results = response.data
-        console.log("results: ")
-        console.log(results)
-
-        respon = results[0]
-
-        let reply = ``
-        console.log("meanings: ")
-        console.log(respon.meanings)
         
+        results = response.data
+        respon = results[0]
+        let reply = ``
         let count = 1
+
         respon.meanings.forEach((result) => {
             reply += `Word ${count}\n`
             reply += `Part Of Speech: ${result.partOfSpeech}\n`
@@ -50,9 +40,6 @@ async function wordhelper(word, chat_id) {
             reply += '\n\n'
             count += 1
         })
-
-        console.log("reply: ")
-        console.log(reply)
         
         axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
                 "chat_id": chat_id,
