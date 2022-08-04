@@ -26,12 +26,9 @@ app.post("/", (req, res) => {
         res.end()
     }
 
-    if (text.toLowerCase().indexOf("wordhelp") >= 0){
+    if (text.toLowerCase() != "help"){
         let m = text.toLowerCase()
-        
-        m = m.replace("wordhelp", "")
-        m = m.replaceAll(" ", "")
-
+       
         wordhelper(m, chat_id)
         res.end()
     }
