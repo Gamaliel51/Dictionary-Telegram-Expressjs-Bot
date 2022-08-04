@@ -2,7 +2,7 @@ const  express = require("express")
 const axios = require("axios")
 const request = require("request")
 const {wordhelper} = require("./axiosfunctions")
-const {telegramsend} = require("./axiosfunctions")
+const {PORT, TOKEN} = require("./Variables")
 
 const app = express()
 
@@ -20,7 +20,7 @@ app.post("/", (req, res) => {
     let fullresponse = ""
 
     if (text == "help"){
-        axios.post("https://api.telegram.org/bot5432331669:AAELTlfBOuSvqfYxkayQ6xrvLFNWisxVdg0/sendMessage", {
+        axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
             "chat_id": chat_id,
             "text": "Type wordhelp <word to check info on"
         })
@@ -39,7 +39,7 @@ app.post("/", (req, res) => {
     }
 
     else{
-        axios.post("https://api.telegram.org/bot5432331669:AAELTlfBOuSvqfYxkayQ6xrvLFNWisxVdg0/sendMessage", {
+        axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
             "chat_id": chat_id,
             "text": `Type wordhelp <word to check info on\n Type help for help`
         })
@@ -49,6 +49,6 @@ app.post("/", (req, res) => {
     res.end()
 })
 
-app.listen(5000, () => {
-    console.log("Listening")
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`)
 })

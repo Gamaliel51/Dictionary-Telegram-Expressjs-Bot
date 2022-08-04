@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {TOKEN} = require("./Variables")
 
 async function wordhelper(word, chat_id) {
     const options = {
@@ -53,7 +54,7 @@ async function wordhelper(word, chat_id) {
         console.log("reply: ")
         console.log(reply)
         
-        axios.post("https://api.telegram.org/bot5432331669:AAELTlfBOuSvqfYxkayQ6xrvLFNWisxVdg0/sendMessage", {
+        axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
                 "chat_id": chat_id,
                 "text": reply
             }).then((response) => {
