@@ -27,12 +27,16 @@ async function wordhelper(word, chat_id) {
         let reply = ``
         console.log("meanings: ")
         console.log(respon.meanings)
-            
+        
+        let count = 1
         respon.meanings.forEach((result) => {
+            reply += `Word ${count}\n`
             reply += `Part Of Speech: ${result.partOfSpeech}\n`
             result.definitions.forEach((defs) => {
                 reply += `Definition: ${defs.definition}\n`
-                reply += `Example: ${defs.example}\n`
+                if (defs.example){
+                    reply += `Example: ${defs.example}\n`
+                }
                 defs.synonyms.forEach((s) => {
                     reply += `Synonyms: ${s}, `
                 })
@@ -42,7 +46,8 @@ async function wordhelper(word, chat_id) {
                 })
                 reply += `\n`
             })
-            reply += `Next \n\n`
+            reply += '\n\n'
+            count += 1
         })
 
         console.log("reply: ")

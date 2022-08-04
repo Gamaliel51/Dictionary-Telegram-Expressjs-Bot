@@ -38,6 +38,14 @@ app.post("/", (req, res) => {
         res.end()
     }
 
+    else{
+        axios.post("https://api.telegram.org/bot5432331669:AAELTlfBOuSvqfYxkayQ6xrvLFNWisxVdg0/sendMessage", {
+            "chat_id": chat_id,
+            "text": `Type wordhelp <word to check info on\n Type help for help`
+        })
+        res.end()
+    }
+
     res.end()
 })
 
