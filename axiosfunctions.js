@@ -1,3 +1,5 @@
+const axios = require("axios")
+
 async function wordhelper(word) {
     const options = {
         method: 'GET',
@@ -8,12 +10,23 @@ async function wordhelper(word) {
         }
     };
       
-    result = await axios.request(options)
+    result = await axios.get(`https://wordsapiv1.p.rapidapi.com/words/${word}`)
     respon = await result.json()
-    return respon
-}
 
-async function telegramsend(reply) {
+    let reply = ``
+    console.log(fullresponse)
+        
+    respon.results.map((result) => {
+        reply += `Definition: ${result.definition}\n`
+        reply += `Part of Speech: ${result.partOfSpeech}\n`
+        reply += `Syllables: ${result.synonyms.map((i) => {return i})}\n`
+        reply += `Derivation: ${result.derivation.map((i) => {return i})}\n`
+        reply += `Examples: ${result.examples.map((i) => {return i})}\n`
+    })
+
+    reply += `${respon.results.pronunciation.all}\n`
+    reply += "Next : \n"
+    
     axios.post("https://api.telegram.org/bot5582410539:AAE2EXxLlZc3GJj5HaqUtyScnPGUcqCoXvU/sendMessage", {
             "chat_id": chat_id,
             "text": reply
@@ -25,4 +38,4 @@ async function telegramsend(reply) {
         })
 }
 
-module.exports = {wordhelper, telegramsend}
+module.exports = {wordhelper}

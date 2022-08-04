@@ -33,24 +33,7 @@ app.post("/gamabot", (req, res) => {
         m.replace("wordhelp", "")
         m.replaceAll(" ", "")
 
-        fullresponse = wordhelper(m)
-
-        let reply = ``
-        console.log(fullresponse)
-        
-        fullresponse.results.map((result) => {
-            reply += `Definition: ${result.definition}\n`
-            reply += `Part of Speech: ${result.partOfSpeech}\n`
-            reply += `Syllables: ${result.synonyms.map((i) => {return i})}\n`
-            reply += `Derivation: ${result.derivation.map((i) => {return i})}\n`
-            reply += `Examples: ${result.examples.map((i) => {return i})}\n`
-        })
-
-        reply += `${results.pronunciation.all}\n`
-        reply += "Next : \n"
-
-        telegramsend(reply)
-        
+        wordhelper(m)
     }
 
 })
