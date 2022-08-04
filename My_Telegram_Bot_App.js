@@ -21,7 +21,7 @@ app.post("/", (req, res) => {
     if (text == "help"){
         axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
             "chat_id": chat_id,
-            "text": "Type wordhelp <word to check info on"
+            "text": `Type wordhelp <word to search>\n`
         })
         res.end()
     }
@@ -38,7 +38,7 @@ app.post("/", (req, res) => {
     else{
         axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
             "chat_id": chat_id,
-            "text": `Type wordhelp <word to check info on\n Type help for help`
+            "text": `Type wordhelp <word to search>\n Type help to bring up this message again`
         })
         res.end()
     }
