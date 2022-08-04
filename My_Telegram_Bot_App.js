@@ -13,7 +13,9 @@ app.get("/", (req, res) => {
 })
 
 app.post("/gamabot", (req, res) => {
-    let {message} = req.body
+    let chat_id = req.body.message.chat.id
+    let text = req.body.message.text
+    
     let fullresponse = ""
 
     if (message.text == "help"){
