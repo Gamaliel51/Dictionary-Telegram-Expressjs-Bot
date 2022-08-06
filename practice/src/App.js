@@ -1,8 +1,12 @@
+import NavBar from "./NavBar";
 
-function App() {
+export default function App() {
   return (
-    <h1>hello</h1>
+    <div className="App">
+      <NavBar/>
+      <h1>hello</h1>
+      <p>The Time now is {new Date().toLocaleTimeString()}</p>
+    </div>
   );
 }
 
-export default App;

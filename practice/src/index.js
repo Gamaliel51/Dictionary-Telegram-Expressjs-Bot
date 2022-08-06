@@ -5,9 +5,12 @@ import App from './App';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
+function dorender(){
+  const elem = (
+    <App/>
+  )
+  root.render(elem)
+}
+
+setInterval(dorender, 1000)
