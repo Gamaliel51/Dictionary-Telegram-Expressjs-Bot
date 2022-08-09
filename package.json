@@ -7,6 +7,7 @@
     "dev": "nodemon Cash_Transfer_Practice.js"
   },
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "axios": "^0.27.2",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "~1.4.4",
@@ -14,7 +15,6 @@
     "ejs": "^3.1.8",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
-    "flutterwave-node-v3": "^1.0.10",
     "http-errors": "~1.6.3",
     "mongoose": "^6.5.0",
     "morgan": "~1.9.1",

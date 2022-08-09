@@ -3,8 +3,6 @@ const mongoose = require("mongoose")
 const passport = require("passport")
 const cashUsers = require("./cashdbLogin")
 const sessions = require("express-session")
-const Flutterwave = require("flutterwave-node-v3")
-const {getFee, cardCharge} = require("./flutterwaveFunctions")
 const path = require("path")
 const dot = require("dotenv")
 dot.config()
@@ -48,10 +46,6 @@ app.post("/", passport.authenticate('local', {failureRedirect: "/"}), (req, res)
 })
 
 app.post("/transfer",  (req, res) => {
-    console.log(req.body)
-    let {fullname, card_number, expirationdate, cvv, email, amount} = req.body
-    let redirect = "http://localhost:5000"
-    cardCharge(req, res, card_number, cvv, expirationdate.slice(0,2), expirationdate.slice(2), email, fullname, redirect, String(amount))
     res.end()
 })
 
