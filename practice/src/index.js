@@ -1,16 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-function dorender(){
-  const elem = (
+ReactDOM.render(
+  <React.StrictMode>
     <App/>
-  )
-  root.render(elem)
-}
-
-setInterval(dorender, 1000)
+  </React.StrictMode>,
+  document.getElementById("root")
+);
