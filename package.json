@@ -7,7 +7,6 @@
     "dev": "nodemon Cash_Transfer_Practice.js"
   },
   "dependencies": {
-    "@paypal/checkout-server-sdk": "^1.0.3",
     "axios": "^0.27.2",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "~1.4.4",
