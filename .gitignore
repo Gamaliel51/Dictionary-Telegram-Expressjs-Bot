@@ -1,3 +1,6 @@
 .env
 /node_modules
 /target
+Cash_Transfer_Practice.js
+cashdbLogin.js
+flutterwaveFunctions.js

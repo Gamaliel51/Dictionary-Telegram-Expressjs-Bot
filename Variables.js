@@ -1,4 +1,4 @@
 PORT = process.env.PORT
-TOKEN = "5432331669:AAELTlfBOuSvqfYxkayQ6xrvLFNWisxVdg0"
+TOKEN = "<Enter Your Token Here>"
 
 module.exports = {PORT, TOKEN}
