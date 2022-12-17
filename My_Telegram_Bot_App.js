@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     res.send("hello")
 })
 
-app.post("/", (req, res) => {
+app.post("/bot", (req, res) => {
     
     let chat_id = req.body.message.chat.id
     let text = req.body.message.text
