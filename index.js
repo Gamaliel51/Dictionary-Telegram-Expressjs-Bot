@@ -19,7 +19,7 @@ app.post("/bot", (req, res) => {
     let text = req.body.message.text
 
     if (text == "help"){
-        axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        axios.post(`https://api.telegram.org/bot${process.env.TOKEN}/sendMessage`, {
             "chat_id": chat_id,
             "text": `Just type in the word to search for.\n\n`
         })
@@ -42,6 +42,6 @@ app.post("/bot", (req, res) => {
     res.end()
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
