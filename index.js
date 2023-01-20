@@ -45,3 +45,5 @@ app.post("/bot", (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`Listening on port ${PORT}`)
 })
+
+module.exports = app
