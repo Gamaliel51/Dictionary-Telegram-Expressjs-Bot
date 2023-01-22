@@ -6,8 +6,8 @@ async function wordhelper(word, chat_id) {
     let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     
     axios.get(url).then((response) => {
-        console.log(response)
         results = response.data
+        console.log(results)
         respon = results[0]
         let reply = ``
         let count = 1
