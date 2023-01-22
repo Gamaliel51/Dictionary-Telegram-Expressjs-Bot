@@ -2,9 +2,12 @@
   "name": "js-fullstack-project",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node Cash_Transfer_Practice.js",
-    "dev": "nodemon Cash_Transfer_Practice.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
