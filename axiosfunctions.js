@@ -2,19 +2,11 @@ const axios = require("axios")
 const {TOKEN} = require("./Variables")
 
 async function wordhelper(word, chat_id) {
-    const options = {
-        method: 'GET',
-        url: `https://wordsapiv1.p.rapidapi.com/words/${word}`,
-        headers: {
-          'X-RapidAPI-Key': '1145743444msh1f62d6aff7eb38fp12fad3jsn9bb76a81f007',
-          'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
-        }
-    };
-
+   
     let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     
     axios.get(url).then((response) => {
-        
+        console.log(response)
         results = response.data
         respon = results[0]
         let reply = ``
