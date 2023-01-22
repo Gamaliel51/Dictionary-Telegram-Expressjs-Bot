@@ -36,7 +36,7 @@ async function wordhelper(word, chat_id) {
                 "chat_id": chat_id,
                 "text": reply
             }).then((response) => {
-                console.log("miracle working")
+                console.log("miracle working");
                 console.log(response)
             }).catch((err) => {
                 console.error(err)
