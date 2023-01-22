@@ -33,7 +33,7 @@ async function wordhelper(word, chat_id) {
             count += 1
         })
         
-        axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        axios.post(`https://api.telegram.org/bot${process.env.TOKEN}/sendMessage`, {
                 "chat_id": chat_id,
                 "text": reply
             }).then((response) => {
