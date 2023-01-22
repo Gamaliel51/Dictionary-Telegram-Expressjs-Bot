@@ -7,7 +7,6 @@ async function wordhelper(word, chat_id) {
     
     axios.get(url).then((response) => {
         results = response.data
-        console.log(results)
         respon = results[0]
         let reply = ``
         let count = 1
